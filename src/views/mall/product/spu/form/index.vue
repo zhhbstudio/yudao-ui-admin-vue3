@@ -57,10 +57,10 @@ import { cloneDeep } from 'lodash-es'
 import { useTagsViewStore } from '@/store/modules/tagsView'
 import * as ProductSpuApi from '@/api/mall/product/spu'
 import InfoForm from './InfoForm.vue'
-import DescriptionForm from './DescriptionForm.vue'
-import OtherForm from './OtherForm.vue'
+// import DescriptionForm from './DescriptionForm.vue'
+// import OtherForm from './OtherForm.vue'
 import SkuForm from './SkuForm.vue'
-import DeliveryForm from './DeliveryForm.vue'
+// import DeliveryForm from './DeliveryForm.vue'
 import { convertToInteger, floatToFixed2, formatToFraction } from '@/utils'
 
 defineOptions({ name: 'ProductSpuAdd' })
@@ -109,7 +109,10 @@ const formData = ref<ProductSpuApi.Spu>({
   description: '', // 商品详情
   sort: 0, // 商品排序
   giveIntegral: 0, // 赠送积分
-  virtualSalesCount: 0 // 虚拟销量
+  virtualSalesCount: 0, // 虚拟销量
+  minNum: 1,
+  maxNum: undefined,
+  stepNum: 1,
 })
 
 /** 获得详情 */
