@@ -29,11 +29,11 @@
         </template>
       </el-table-column>
     </template>
-    <el-table-column align="center" label="商品条码" min-width="168">
-      <template #default="{ row }">
-        <el-input v-model="row.barCode" class="w-100%" />
-      </template>
-    </el-table-column>
+<!--    <el-table-column align="center" label="商品条码" min-width="168">-->
+<!--      <template #default="{ row }">-->
+<!--        <el-input v-model="row.barCode" class="w-100%" />-->
+<!--      </template>-->
+<!--    </el-table-column>-->
     <el-table-column align="center" label="销售价" min-width="168">
       <template #default="{ row }">
         <el-input-number
@@ -46,18 +46,18 @@
         />
       </template>
     </el-table-column>
-    <el-table-column align="center" label="市场价" min-width="168">
-      <template #default="{ row }">
-        <el-input-number
-          v-model="row.marketPrice"
-          :min="0"
-          :precision="2"
-          :step="0.1"
-          class="w-100%"
-          controls-position="right"
-        />
-      </template>
-    </el-table-column>
+<!--    <el-table-column align="center" label="市场价" min-width="168">-->
+<!--      <template #default="{ row }">-->
+<!--        <el-input-number-->
+<!--          v-model="row.marketPrice"-->
+<!--          :min="0"-->
+<!--          :precision="2"-->
+<!--          :step="0.1"-->
+<!--          class="w-100%"-->
+<!--          controls-position="right"-->
+<!--        />-->
+<!--      </template>-->
+<!--    </el-table-column>-->
     <el-table-column align="center" label="成本价" min-width="168">
       <template #default="{ row }">
         <el-input-number
@@ -70,35 +70,35 @@
         />
       </template>
     </el-table-column>
-    <el-table-column align="center" label="库存" min-width="168">
-      <template #default="{ row }">
-        <el-input-number v-model="row.stock" :min="0" class="w-100%" controls-position="right" />
-      </template>
-    </el-table-column>
-    <el-table-column align="center" label="重量(kg)" min-width="168">
-      <template #default="{ row }">
-        <el-input-number
-          v-model="row.weight"
-          :min="0"
-          :precision="2"
-          :step="0.1"
-          class="w-100%"
-          controls-position="right"
-        />
-      </template>
-    </el-table-column>
-    <el-table-column align="center" label="体积(m^3)" min-width="168">
-      <template #default="{ row }">
-        <el-input-number
-          v-model="row.volume"
-          :min="0"
-          :precision="2"
-          :step="0.1"
-          class="w-100%"
-          controls-position="right"
-        />
-      </template>
-    </el-table-column>
+<!--    <el-table-column align="center" label="库存" min-width="168">-->
+<!--      <template #default="{ row }">-->
+<!--        <el-input-number v-model="row.stock" :min="0" class="w-100%" controls-position="right" />-->
+<!--      </template>-->
+<!--    </el-table-column>-->
+<!--    <el-table-column align="center" label="重量(kg)" min-width="168">-->
+<!--      <template #default="{ row }">-->
+<!--        <el-input-number-->
+<!--          v-model="row.weight"-->
+<!--          :min="0"-->
+<!--          :precision="2"-->
+<!--          :step="0.1"-->
+<!--          class="w-100%"-->
+<!--          controls-position="right"-->
+<!--        />-->
+<!--      </template>-->
+<!--    </el-table-column>-->
+<!--    <el-table-column align="center" label="体积(m^3)" min-width="168">-->
+<!--      <template #default="{ row }">-->
+<!--        <el-input-number-->
+<!--          v-model="row.volume"-->
+<!--          :min="0"-->
+<!--          :precision="2"-->
+<!--          :step="0.1"-->
+<!--          class="w-100%"-->
+<!--          controls-position="right"-->
+<!--        />-->
+<!--      </template>-->
+<!--    </el-table-column>-->
     <template v-if="formData!.subCommissionType">
       <el-table-column align="center" label="一级返佣(元)" min-width="168">
         <template #default="{ row }">
@@ -147,16 +147,16 @@
     @selection-change="handleSelectionChange"
   >
     <el-table-column v-if="isComponent" type="selection" width="45" />
-    <el-table-column align="center" label="图片" min-width="80">
-      <template #default="{ row }">
-        <el-image
-          v-if="row.picUrl"
-          :src="row.picUrl"
-          class="h-50px w-50px"
-          @click="imagePreview(row.picUrl)"
-        />
-      </template>
-    </el-table-column>
+<!--    <el-table-column align="center" label="图片" min-width="80">-->
+<!--      <template #default="{ row }">-->
+<!--        <el-image-->
+<!--          v-if="row.picUrl"-->
+<!--          :src="row.picUrl"-->
+<!--          class="h-50px w-50px"-->
+<!--          @click="imagePreview(row.picUrl)"-->
+<!--        />-->
+<!--      </template>-->
+<!--    </el-table-column>-->
     <template v-if="formData!.specType && !isBatch">
       <!--  根据商品属性动态添加 -->
       <el-table-column
@@ -173,41 +173,41 @@
         </template>
       </el-table-column>
     </template>
-    <el-table-column align="center" label="商品条码" min-width="100">
-      <template #default="{ row }">
-        {{ row.barCode }}
-      </template>
-    </el-table-column>
+<!--    <el-table-column align="center" label="商品条码" min-width="100">-->
+<!--      <template #default="{ row }">-->
+<!--        {{ row.barCode }}-->
+<!--      </template>-->
+<!--    </el-table-column>-->
     <el-table-column align="center" label="销售价(元)" min-width="80">
       <template #default="{ row }">
         {{ row.price }}
       </template>
     </el-table-column>
-    <el-table-column align="center" label="市场价(元)" min-width="80">
-      <template #default="{ row }">
-        {{ row.marketPrice }}
-      </template>
-    </el-table-column>
+<!--    <el-table-column align="center" label="市场价(元)" min-width="80">-->
+<!--      <template #default="{ row }">-->
+<!--        {{ row.marketPrice }}-->
+<!--      </template>-->
+<!--    </el-table-column>-->
     <el-table-column align="center" label="成本价(元)" min-width="80">
       <template #default="{ row }">
         {{ row.costPrice }}
       </template>
     </el-table-column>
-    <el-table-column align="center" label="库存" min-width="80">
-      <template #default="{ row }">
-        {{ row.stock }}
-      </template>
-    </el-table-column>
-    <el-table-column align="center" label="重量(kg)" min-width="80">
-      <template #default="{ row }">
-        {{ row.weight }}
-      </template>
-    </el-table-column>
-    <el-table-column align="center" label="体积(m^3)" min-width="80">
-      <template #default="{ row }">
-        {{ row.volume }}
-      </template>
-    </el-table-column>
+<!--    <el-table-column align="center" label="库存" min-width="80">-->
+<!--      <template #default="{ row }">-->
+<!--        {{ row.stock }}-->
+<!--      </template>-->
+<!--    </el-table-column>-->
+<!--    <el-table-column align="center" label="重量(kg)" min-width="80">-->
+<!--      <template #default="{ row }">-->
+<!--        {{ row.weight }}-->
+<!--      </template>-->
+<!--    </el-table-column>-->
+<!--    <el-table-column align="center" label="体积(m^3)" min-width="80">-->
+<!--      <template #default="{ row }">-->
+<!--        {{ row.volume }}-->
+<!--      </template>-->
+<!--    </el-table-column>-->
     <template v-if="formData!.subCommissionType">
       <el-table-column align="center" label="一级返佣(元)" min-width="80">
         <template #default="{ row }">

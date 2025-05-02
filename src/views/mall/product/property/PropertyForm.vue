@@ -13,6 +13,21 @@
       <el-form-item label="备注" prop="remark">
         <el-input v-model="formData.remark" placeholder="请输入内容" type="textarea" />
       </el-form-item>
+      <el-form-item label="属性标识" prop="mark">
+        <el-select
+          v-model="formData.mark"
+          class="!w-360px"
+          default-first-option
+          filterable
+          placeholder="请选择属性标识">
+          <el-option
+            v-for="item in attributeOptions"
+            :key="item.name"
+            :label="item.label"
+            :value="item.name"
+          />
+        </el-select>
+      </el-form-item>
     </el-form>
     <template #footer>
       <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
@@ -34,12 +49,24 @@ const formLoading = ref(false) // 表单的加载中：1）修改时的数据加
 const formType = ref('') // 表单的类型：create - 新增；update - 修改
 const formData = ref({
   id: undefined,
-  name: ''
+  name: '',
+  remark: '',
+  mark: ''
 })
 const formRules = reactive({
   name: [{ required: true, message: '名称不能为空', trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
+const attributeOptions = ref([
+    {
+      name: 'default',
+      label: '无'
+    },
+    {
+      name: 'duration',
+      label: '时长'
+    }
+] as PropertyApi.PropertyMarkVO[]) // 商品属性名称下拉框
 
 /** 打开弹窗 */
 const open = async (type: string, id?: number) => {
@@ -89,7 +116,9 @@ const submitForm = async () => {
 const resetForm = () => {
   formData.value = {
     id: undefined,
-    name: ''
+    name: '',
+    remark: '',
+    mark: ''
   }
   formRef.value?.resetFields()
 }

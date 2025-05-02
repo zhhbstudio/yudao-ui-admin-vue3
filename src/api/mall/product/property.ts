@@ -9,6 +9,8 @@ export interface PropertyVO {
   name: string
   /** 备注 */
   remark?: string
+
+  mark?: string
 }
 
 /**
@@ -22,6 +24,15 @@ export interface PropertyValueVO {
   name: string
   /** 备注 */
   remark?: string
+
+  isDefault?: number
+
+  promotionMark?: string
+}
+
+export interface PropertyMarkVO {
+  name: string
+  label: string
 }
 
 // ------------------------ 属性项 -------------------

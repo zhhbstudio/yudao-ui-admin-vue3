@@ -16,6 +16,12 @@
       <el-form-item label="备注" prop="remark">
         <el-input v-model="formData.remark" placeholder="请输入内容" type="textarea" />
       </el-form-item>
+      <el-form-item label="默认值" prop="isDefault">
+        <el-switch v-model="formData.isDefault" active-text="是" inactive-text="否" />
+      </el-form-item>
+      <el-form-item label="营销标识" prop="promotionMark">
+        <el-input v-model="formData.promotionMark" placeholder="请输入内容" />
+      </el-form-item>
     </el-form>
     <template #footer>
       <el-button :disabled="formLoading" type="primary" @click="submitForm">确 定</el-button>
@@ -39,7 +45,9 @@ const formData = ref({
   id: undefined,
   propertyId: undefined,
   name: '',
-  remark: ''
+  remark: '',
+  isDefault: 0,
+  promotionMark: ''
 })
 const formRules = reactive({
   propertyId: [{ required: true, message: '属性不能为空', trigger: 'blur' }],
@@ -59,6 +67,7 @@ const open = async (type: string, propertyId: number, id?: number) => {
     formLoading.value = true
     try {
       formData.value = await PropertyApi.getPropertyValue(id)
+      formData.value.isDefault = formData.value.isDefault === 1
     } finally {
       formLoading.value = false
     }
@@ -77,6 +86,7 @@ const submitForm = async () => {
   formLoading.value = true
   try {
     const data = formData.value as PropertyApi.PropertyValueVO
+    data.isDefault = data.isDefault ? 1 : 0
     if (formType.value === 'create') {
       await PropertyApi.createPropertyValue(data)
       message.success(t('common.createSuccess'))
@@ -98,7 +108,9 @@ const resetForm = () => {
     id: undefined,
     propertyId: undefined,
     name: '',
-    remark: ''
+    remark: '',
+    isDefault: 0,
+    promotionMark: ''
   }
   formRef.value?.resetFields()
 }

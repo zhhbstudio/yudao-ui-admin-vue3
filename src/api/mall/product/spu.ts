@@ -57,7 +57,10 @@ export interface Spu {
   costPrice?: number // 成本价
   stock?: number // 商品库存
   createTime?: Date // 商品创建时间
-  status?: number // 商品状态
+  status?: number // 商品状态,
+  minNum: number,
+  maxNum?: number,
+  stepNum?: number,
 }
 
 // 获得 Spu 列表

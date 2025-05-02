@@ -17,30 +17,30 @@
           :propFormData="formData"
         />
       </el-tab-pane>
-      <el-tab-pane label="物流设置" name="delivery">
-        <DeliveryForm
-          ref="deliveryRef"
-          v-model:activeName="activeName"
-          :is-detail="isDetail"
-          :propFormData="formData"
-        />
-      </el-tab-pane>
-      <el-tab-pane label="商品详情" name="description">
-        <DescriptionForm
-          ref="descriptionRef"
-          v-model:activeName="activeName"
-          :is-detail="isDetail"
-          :propFormData="formData"
-        />
-      </el-tab-pane>
-      <el-tab-pane label="其它设置" name="other">
-        <OtherForm
-          ref="otherRef"
-          v-model:activeName="activeName"
-          :is-detail="isDetail"
-          :propFormData="formData"
-        />
-      </el-tab-pane>
+<!--      <el-tab-pane label="物流设置" name="delivery">-->
+<!--        <DeliveryForm-->
+<!--          ref="deliveryRef"-->
+<!--          v-model:activeName="activeName"-->
+<!--          :is-detail="isDetail"-->
+<!--          :propFormData="formData"-->
+<!--        />-->
+<!--      </el-tab-pane>-->
+<!--      <el-tab-pane label="商品详情" name="description">-->
+<!--        <DescriptionForm-->
+<!--          ref="descriptionRef"-->
+<!--          v-model:activeName="activeName"-->
+<!--          :is-detail="isDetail"-->
+<!--          :propFormData="formData"-->
+<!--        />-->
+<!--      </el-tab-pane>-->
+<!--      <el-tab-pane label="其它设置" name="other">-->
+<!--        <OtherForm-->
+<!--          ref="otherRef"-->
+<!--          v-model:activeName="activeName"-->
+<!--          :is-detail="isDetail"-->
+<!--          :propFormData="formData"-->
+<!--        />-->
+<!--      </el-tab-pane>-->
     </el-tabs>
     <el-form>
       <el-form-item style="float: right">
@@ -170,10 +170,12 @@ const submitForm = async () => {
     })
     // 处理轮播图列表
     const newSliderPicUrls: any[] = []
-    deepCopyFormData.sliderPicUrls!.forEach((item: any) => {
-      // 如果是前端选的图
-      typeof item === 'object' ? newSliderPicUrls.push(item.url) : newSliderPicUrls.push(item)
-    })
+    if (deepCopyFormData.sliderPicUrls && deepCopyFormData.sliderPicUrls.forEach) {
+      deepCopyFormData.sliderPicUrls!.forEach((item: any) => {
+        // 如果是前端选的图
+        typeof item === 'object' ? newSliderPicUrls.push(item.url) : newSliderPicUrls.push(item)
+      })
+    }
     deepCopyFormData.sliderPicUrls = newSliderPicUrls
     // 校验都通过后提交表单
     const data = deepCopyFormData as ProductSpuApi.Spu

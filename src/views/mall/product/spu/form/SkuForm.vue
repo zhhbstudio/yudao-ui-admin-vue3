@@ -8,16 +8,16 @@
     :rules="rules"
     label-width="120px"
   >
-    <el-form-item label="分销类型" prop="subCommissionType">
-      <el-radio-group
-        v-model="formData.subCommissionType"
-        class="w-80"
-        @change="changeSubCommissionType"
-      >
-        <el-radio :value="false">默认设置</el-radio>
-        <el-radio :value="true" class="radio">单独设置</el-radio>
-      </el-radio-group>
-    </el-form-item>
+<!--    <el-form-item label="分销类型" prop="subCommissionType">-->
+<!--      <el-radio-group-->
+<!--        v-model="formData.subCommissionType"-->
+<!--        class="w-80"-->
+<!--        @change="changeSubCommissionType"-->
+<!--      >-->
+<!--        <el-radio :value="false">默认设置</el-radio>-->
+<!--        <el-radio :value="true" class="radio">单独设置</el-radio>-->
+<!--      </el-radio-group>-->
+<!--    </el-form-item>-->
     <el-form-item label="商品规格" prop="specType">
       <el-radio-group v-model="formData.specType" class="w-80" @change="onChangeSpec">
         <el-radio :value="false" class="radio">单规格</el-radio>
@@ -85,18 +85,18 @@ const ruleConfig: RuleConfig[] = [
   },
   {
     name: 'price',
-    rule: (arg) => arg >= 0.01,
-    message: '商品销售价格必须大于等于 0.01 元！！！'
+    rule: (arg) => arg >= 0,
+    message: '商品销售价格必须大于等于 0 元！！！'
   },
   {
     name: 'marketPrice',
-    rule: (arg) => arg >= 0.01,
-    message: '商品市场价格必须大于等于 0.01 元！！！'
+    rule: (arg) => arg >= 0,
+    message: '商品市场价格必须大于等于 0 元！！！'
   },
   {
     name: 'costPrice',
-    rule: (arg) => arg >= 0.01,
-    message: '商品成本价格必须大于等于 0.00 元！！！'
+    rule: (arg) => arg >= 0,
+    message: '商品成本价格必须大于等于 0 元！！！'
   }
 ]
 

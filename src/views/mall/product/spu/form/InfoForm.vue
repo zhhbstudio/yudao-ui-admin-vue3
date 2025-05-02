@@ -24,37 +24,61 @@
         placeholder="请选择商品分类"
       />
     </el-form-item>
-    <el-form-item label="商品品牌" prop="brandId">
-      <el-select v-model="formData.brandId" class="w-80" placeholder="请选择商品品牌">
-        <el-option
-          v-for="item in brandList"
-          :key="item.id"
-          :label="item.name"
-          :value="item.id as number"
-        />
-      </el-select>
-    </el-form-item>
-    <el-form-item label="商品关键字" prop="keyword">
-      <el-input v-model="formData.keyword" class="w-80!" placeholder="请输入商品关键字" />
-    </el-form-item>
-    <el-form-item label="商品简介" prop="introduction">
-      <el-input
-        v-model="formData.introduction"
-        :autosize="{ minRows: 2, maxRows: 2 }"
-        :clearable="true"
-        :show-word-limit="true"
-        class="w-80!"
-        maxlength="128"
-        placeholder="请输入商品简介"
-        type="textarea"
-      />
-    </el-form-item>
-    <el-form-item label="商品封面图" prop="picUrl">
-      <UploadImg v-model="formData.picUrl" :disabled="isDetail" height="80px" />
-    </el-form-item>
-    <el-form-item label="商品轮播图" prop="sliderPicUrls">
-      <UploadImgs v-model="formData.sliderPicUrls" :disabled="isDetail" />
-    </el-form-item>
+      <el-form-item label="最小购买数量" prop="minNum">
+          <el-input
+                  v-model="formData.minNum"
+                  class="w-80!"
+                  placeholder="请输入最小购买数量"
+                  type="number"
+          />
+      </el-form-item>
+      <el-form-item label="递增购买数量" prop="stepNum">
+          <el-input
+                  v-model="formData.stepNum"
+                  class="w-80!"
+                  placeholder="请输入递增购买数量"
+                  type="number"
+          />
+      </el-form-item>
+      <el-form-item label="最大购买数量" prop="maxNum">
+          <el-input
+                  v-model="formData.maxNum"
+                  class="w-80!"
+                  placeholder="请输入最大购买数量"
+                  type="number"
+          />
+      </el-form-item>
+<!--    <el-form-item label="商品品牌" prop="brandId">-->
+<!--      <el-select v-model="formData.brandId" class="w-80" placeholder="请选择商品品牌">-->
+<!--        <el-option-->
+<!--          v-for="item in brandList"-->
+<!--          :key="item.id"-->
+<!--          :label="item.name"-->
+<!--          :value="item.id as number"-->
+<!--        />-->
+<!--      </el-select>-->
+<!--    </el-form-item>-->
+<!--    <el-form-item label="商品关键字" prop="keyword">-->
+<!--      <el-input v-model="formData.keyword" class="w-80!" placeholder="请输入商品关键字" />-->
+<!--    </el-form-item>-->
+<!--    <el-form-item label="商品简介" prop="introduction">-->
+<!--      <el-input-->
+<!--        v-model="formData.introduction"-->
+<!--        :autosize="{ minRows: 2, maxRows: 2 }"-->
+<!--        :clearable="true"-->
+<!--        :show-word-limit="true"-->
+<!--        class="w-80!"-->
+<!--        maxlength="128"-->
+<!--        placeholder="请输入商品简介"-->
+<!--        type="textarea"-->
+<!--      />-->
+<!--    </el-form-item>-->
+<!--    <el-form-item label="商品封面图" prop="picUrl">-->
+<!--      <UploadImg v-model="formData.picUrl" :disabled="isDetail" height="80px" />-->
+<!--    </el-form-item>-->
+<!--    <el-form-item label="商品轮播图" prop="sliderPicUrls">-->
+<!--      <UploadImgs v-model="formData.sliderPicUrls" :disabled="isDetail" />-->
+<!--    </el-form-item>-->
   </el-form>
 </template>
 <script lang="ts" setup>
@@ -83,20 +107,23 @@ const formRef = ref() // 表单 Ref
 const formData = reactive<Spu>({
   name: '', // 商品名称
   categoryId: undefined, // 商品分类
-  keyword: '', // 关键字
-  picUrl: '', // 商品封面图
-  sliderPicUrls: [], // 商品轮播图
-  introduction: '', // 商品简介
-  brandId: undefined // 商品品牌
+  minNum: 1, // 最小购买数量
+  stepNum: 1, // 递增购买数量
+  maxNum: undefined, // 最大购买数量
+  // keyword: '', // 关键字
+  // picUrl: '', // 商品封面图
+  // sliderPicUrls: [], // 商品轮播图
+  // introduction: '', // 商品简介
+  // brandId: undefined // 商品品牌
 })
 const rules = reactive({
   name: [required],
   categoryId: [required],
-  keyword: [required],
-  introduction: [required],
-  picUrl: [required],
-  sliderPicUrls: [required],
-  brandId: [required]
+  // keyword: [required],
+  // introduction: [required],
+  // picUrl: [required],
+  // sliderPicUrls: [required],
+  // brandId: [required]
 })
 
 /** 将传进来的值赋值给 formData */
