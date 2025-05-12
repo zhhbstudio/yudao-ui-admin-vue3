@@ -5,12 +5,12 @@
 
   <el-row :gutter="20">
     <!-- 左侧部门树 -->
-    <el-col :span="4" :xs="24">
-      <ContentWrap class="h-1/1">
-        <DeptTree @node-click="handleDeptNodeClick" />
-      </ContentWrap>
-    </el-col>
-    <el-col :span="20" :xs="24">
+<!--    <el-col :span="4" :xs="24">-->
+<!--      <ContentWrap class="h-1/1">-->
+<!--        <DeptTree @node-click="handleDeptNodeClick" />-->
+<!--      </ContentWrap>-->
+<!--    </el-col>-->
+    <el-col :span="24" :xs="24">
       <!-- 搜索 -->
       <ContentWrap>
         <el-form
@@ -109,13 +109,13 @@
             prop="nickname"
             :show-overflow-tooltip="true"
           />
-          <el-table-column
-            label="部门"
-            align="center"
-            key="deptName"
-            prop="deptName"
-            :show-overflow-tooltip="true"
-          />
+<!--          <el-table-column-->
+<!--            label="部门"-->
+<!--            align="center"-->
+<!--            key="deptName"-->
+<!--            prop="deptName"-->
+<!--            :show-overflow-tooltip="true"-->
+<!--          />-->
           <el-table-column label="手机号码" align="center" prop="mobile" width="120" />
           <el-table-column label="状态" key="status">
             <template #default="scope">

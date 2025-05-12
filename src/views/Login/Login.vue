@@ -20,10 +20,10 @@
             tag="div"
           >
             <img key="1" alt="" class="w-350px" src="@/assets/svgs/login-box-bg.svg" />
-            <div key="2" class="text-3xl text-white">{{ t('login.welcome') }}</div>
-            <div key="3" class="mt-5 text-14px font-normal text-white">
-              {{ t('login.message') }}
-            </div>
+<!--            <div key="2" class="text-3xl text-white">{{ t('login.welcome') }}</div>-->
+<!--            <div key="3" class="mt-5 text-14px font-normal text-white">-->
+<!--              {{ t('login.message') }}-->
+<!--            </div>-->
           </TransitionGroup>
         </div>
       </div>
@@ -52,15 +52,15 @@
             <!-- 账号登录 -->
             <LoginForm class="m-auto h-auto p-20px lt-xl:(rounded-3xl light:bg-white)" />
             <!-- 手机登录 -->
-            <MobileForm class="m-auto h-auto p-20px lt-xl:(rounded-3xl light:bg-white)" />
+<!--            <MobileForm class="m-auto h-auto p-20px lt-xl:(rounded-3xl light:bg-white)" />-->
             <!-- 二维码登录 -->
-            <QrCodeForm class="m-auto h-auto p-20px lt-xl:(rounded-3xl light:bg-white)" />
+<!--            <QrCodeForm class="m-auto h-auto p-20px lt-xl:(rounded-3xl light:bg-white)" />-->
             <!-- 注册 -->
-            <RegisterForm class="m-auto h-auto p-20px lt-xl:(rounded-3xl light:bg-white)" />
+<!--            <RegisterForm class="m-auto h-auto p-20px lt-xl:(rounded-3xl light:bg-white)" />-->
             <!-- 三方登录 -->
-            <SSOLoginVue class="m-auto h-auto p-20px lt-xl:(rounded-3xl light:bg-white)" />
+<!--            <SSOLoginVue class="m-auto h-auto p-20px lt-xl:(rounded-3xl light:bg-white)" />-->
             <!-- 忘记密码 -->
-            <ForgetPasswordForm class="m-auto h-auto p-20px lt-xl:(rounded-3xl light:bg-white)" />
+<!--            <ForgetPasswordForm class="m-auto h-auto p-20px lt-xl:(rounded-3xl light:bg-white)" />-->
           </div>
         </Transition>
       </div>

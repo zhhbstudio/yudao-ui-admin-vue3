@@ -85,68 +85,68 @@
       />
     </el-tabs>
     <el-table v-loading="loading" :data="list">
-      <el-table-column type="expand">
-        <template #default="{ row }">
-          <el-form class="spu-table-expand" label-position="left">
-            <el-row>
-              <el-col :span="24">
-                <el-row>
-                  <el-col :span="8">
-                    <el-form-item label="商品分类:">
-                      <span>{{ formatCategoryName(row.categoryId) }}</span>
-                    </el-form-item>
-                  </el-col>
-                  <el-col :span="8">
-                    <el-form-item label="市场价:">
-                      <span>{{ fenToYuan(row.marketPrice) }}</span>
-                    </el-form-item>
-                  </el-col>
-                  <el-col :span="8">
-                    <el-form-item label="成本价:">
-                      <span>{{ fenToYuan(row.costPrice) }}</span>
-                    </el-form-item>
-                  </el-col>
-                </el-row>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :span="24">
-                <el-row>
-                  <el-col :span="8">
-                    <el-form-item label="浏览量:">
-                      <span>{{ row.browseCount }}</span>
-                    </el-form-item>
-                  </el-col>
-                  <el-col :span="8">
-                    <el-form-item label="虚拟销量:">
-                      <span>{{ row.virtualSalesCount }}</span>
-                    </el-form-item>
-                  </el-col>
-                </el-row>
-              </el-col>
-            </el-row>
-          </el-form>
-        </template>
-      </el-table-column>
+<!--      <el-table-column type="expand">-->
+<!--        <template #default="{ row }">-->
+<!--          <el-form class="spu-table-expand" label-position="left">-->
+<!--            <el-row>-->
+<!--              <el-col :span="24">-->
+<!--                <el-row>-->
+<!--                  <el-col :span="8">-->
+<!--                    <el-form-item label="商品分类:">-->
+<!--                      <span>{{ formatCategoryName(row.categoryId) }}</span>-->
+<!--                    </el-form-item>-->
+<!--                  </el-col>-->
+<!--                  <el-col :span="8">-->
+<!--                    <el-form-item label="市场价:">-->
+<!--                      <span>{{ fenToYuan(row.marketPrice) }}</span>-->
+<!--                    </el-form-item>-->
+<!--                  </el-col>-->
+<!--                  <el-col :span="8">-->
+<!--                    <el-form-item label="成本价:">-->
+<!--                      <span>{{ fenToYuan(row.costPrice) }}</span>-->
+<!--                    </el-form-item>-->
+<!--                  </el-col>-->
+<!--                </el-row>-->
+<!--              </el-col>-->
+<!--            </el-row>-->
+<!--            <el-row>-->
+<!--              <el-col :span="24">-->
+<!--                <el-row>-->
+<!--                  <el-col :span="8">-->
+<!--                    <el-form-item label="浏览量:">-->
+<!--                      <span>{{ row.browseCount }}</span>-->
+<!--                    </el-form-item>-->
+<!--                  </el-col>-->
+<!--                  <el-col :span="8">-->
+<!--                    <el-form-item label="虚拟销量:">-->
+<!--                      <span>{{ row.virtualSalesCount }}</span>-->
+<!--                    </el-form-item>-->
+<!--                  </el-col>-->
+<!--                </el-row>-->
+<!--              </el-col>-->
+<!--            </el-row>-->
+<!--          </el-form>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
       <el-table-column label="商品编号" min-width="140" prop="id" />
-      <el-table-column label="商品信息" min-width="300">
-        <template #default="{ row }">
-          <div class="flex">
-            <el-image
-              fit="cover"
-              :src="row.picUrl"
-              class="flex-none w-50px h-50px"
-              @click="imagePreview(row.picUrl)"
-            />
-            <div class="ml-4 overflow-hidden">
-              <el-tooltip effect="dark" :content="row.name" placement="top">
-                <div>
-                  {{ row.name }}
-                </div>
-              </el-tooltip>
-            </div>
-          </div>
-        </template>
+      <el-table-column label="商品名称" min-width="300" prop="name">
+<!--        <template #default="{ row }">-->
+<!--          <div class="flex">-->
+<!--            <el-image-->
+<!--              fit="cover"-->
+<!--              :src="row.picUrl"-->
+<!--              class="flex-none w-50px h-50px"-->
+<!--              @click="imagePreview(row.picUrl)"-->
+<!--            />-->
+<!--            <div class="ml-4 overflow-hidden">-->
+<!--              <el-tooltip effect="dark" :content="row.name" placement="top">-->
+<!--                <div>-->
+<!--                  {{ row.name }}-->
+<!--                </div>-->
+<!--              </el-tooltip>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </template>-->
       </el-table-column>
       <el-table-column align="center" label="价格" min-width="160" prop="price">
         <template #default="{ row }"> ¥ {{ fenToYuan(row.price) }}</template>
