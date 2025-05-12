@@ -37,6 +37,7 @@ interface AppState {
   footer: boolean
   theme: ThemeTypes
   fixedMenu: boolean
+  showSetting: boolean
 }
 
 export const useAppStore = defineStore('app', {
@@ -53,11 +54,11 @@ export const useAppStore = defineStore('app', {
       collapse: false, // 折叠菜单
       uniqueOpened: true, // 是否只保持一个子菜单的展开
       hamburger: true, // 折叠图标
-      screenfull: true, // 全屏图标
-      search: true, // 搜索图标
-      size: true, // 尺寸图标
-      locale: true, // 多语言图标
-      message: true, // 消息图标
+      screenfull: false, // 全屏图标
+      search: false, // 搜索图标
+      size: false, // 尺寸图标
+      locale: false, // 多语言图标
+      message: false, // 消息图标
       tagsView: true, // 标签页
       tagsViewImmerse: false, // 标签页沉浸
       tagsViewIcon: true, // 是否显示标签图标
@@ -65,6 +66,7 @@ export const useAppStore = defineStore('app', {
       fixedHeader: true, // 固定toolheader
       footer: true, // 显示页脚
       greyMode: false, // 是否开始灰色模式，用于特殊悼念日
+      showSetting: false, // 是否显示设置按钮
       fixedMenu: wsCache.get('fixedMenu') || false, // 是否固定菜单
 
       layout: wsCache.get(CACHE_KEY.LAYOUT) || 'classic', // layout布局
@@ -105,6 +107,9 @@ export const useAppStore = defineStore('app', {
   getters: {
     getBreadcrumb(): boolean {
       return this.breadcrumb
+    },
+    getSetting(): boolean {
+      return this.showSetting
     },
     getBreadcrumbIcon(): boolean {
       return this.breadcrumbIcon

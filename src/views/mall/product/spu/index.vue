@@ -60,16 +60,16 @@
           <Icon class="mr-5px" icon="ep:plus" />
           新增
         </el-button>
-        <el-button
-          v-hasPermi="['product:spu:export']"
-          :loading="exportLoading"
-          plain
-          type="success"
-          @click="handleExport"
-        >
-          <Icon class="mr-5px" icon="ep:download" />
-          导出
-        </el-button>
+<!--        <el-button-->
+<!--          v-hasPermi="['product:spu:export']"-->
+<!--          :loading="exportLoading"-->
+<!--          plain-->
+<!--          type="success"-->
+<!--          @click="handleExport"-->
+<!--        >-->
+<!--          <Icon class="mr-5px" icon="ep:download" />-->
+<!--          导出-->
+<!--        </el-button>-->
       </el-form-item>
     </el-form>
   </ContentWrap>
@@ -148,11 +148,11 @@
 <!--          </div>-->
 <!--        </template>-->
       </el-table-column>
-      <el-table-column align="center" label="价格" min-width="160" prop="price">
-        <template #default="{ row }"> ¥ {{ fenToYuan(row.price) }}</template>
-      </el-table-column>
-      <el-table-column align="center" label="销量" min-width="90" prop="salesCount" />
-      <el-table-column align="center" label="库存" min-width="90" prop="stock" />
+<!--      <el-table-column align="center" label="价格" min-width="160" prop="price">-->
+<!--        <template #default="{ row }"> ¥ {{ fenToYuan(row.price) }}</template>-->
+<!--      </el-table-column>-->
+<!--      <el-table-column align="center" label="销量" min-width="90" prop="salesCount" />-->
+<!--      <el-table-column align="center" label="库存" min-width="90" prop="stock" />-->
       <el-table-column align="center" label="排序" min-width="70" prop="sort" />
       <el-table-column align="center" label="销售状态" min-width="80">
         <template #default="{ row }">
@@ -259,21 +259,21 @@ const tabsData = ref([
     type: 0,
     count: 0
   },
-  {
-    name: '仓库中',
-    type: 1,
-    count: 0
-  },
-  {
-    name: '已售罄',
-    type: 2,
-    count: 0
-  },
-  {
-    name: '警戒库存',
-    type: 3,
-    count: 0
-  },
+  // {
+  //   name: '仓库中',
+  //   type: 1,
+  //   count: 0
+  // },
+  // {
+  //   name: '已售罄',
+  //   type: 2,
+  //   count: 0
+  // },
+  // {
+  //   name: '警戒库存',
+  //   type: 3,
+  //   count: 0
+  // },
   {
     name: '回收站',
     type: 4,
@@ -313,7 +313,9 @@ const handleTabClick = (tab: TabsPaneContext) => {
 const getTabsCount = async () => {
   const res = await ProductSpuApi.getTabsCount()
   for (let objName in res) {
-    tabsData.value[Number(objName)].count = res[objName]
+    if (tabsData.value[Number(objName)]) {
+      tabsData.value[Number(objName)].count = res[objName]
+    }
   }
 }
 

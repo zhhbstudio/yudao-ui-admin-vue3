@@ -74,23 +74,23 @@
             >
               <Icon icon="ep:plus" /> 新增
             </el-button>
-            <el-button
-              type="warning"
-              plain
-              @click="handleImport"
-              v-hasPermi="['system:user:import']"
-            >
-              <Icon icon="ep:upload" /> 导入
-            </el-button>
-            <el-button
-              type="success"
-              plain
-              @click="handleExport"
-              :loading="exportLoading"
-              v-hasPermi="['system:user:export']"
-            >
-              <Icon icon="ep:download" />导出
-            </el-button>
+<!--            <el-button-->
+<!--              type="warning"-->
+<!--              plain-->
+<!--              @click="handleImport"-->
+<!--              v-hasPermi="['system:user:import']"-->
+<!--            >-->
+<!--              <Icon icon="ep:upload" /> 导入-->
+<!--            </el-button>-->
+<!--            <el-button-->
+<!--              type="success"-->
+<!--              plain-->
+<!--              @click="handleExport"-->
+<!--              :loading="exportLoading"-->
+<!--              v-hasPermi="['system:user:export']"-->
+<!--            >-->
+<!--              <Icon icon="ep:download" />导出-->
+<!--            </el-button>-->
           </el-form-item>
         </el-form>
       </ContentWrap>
