@@ -10,15 +10,24 @@
       class="-mb-15px"
       label-width="68px"
     >
-      <el-form-item label="用户昵称" prop="nickname">
+      <el-form-item label="用户名" prop="username">
         <el-input
-          v-model="queryParams.nickname"
+          v-model="queryParams.username"
           class="!w-240px"
           clearable
-          placeholder="请输入用户昵称"
+          placeholder="请输入用户名"
           @keyup.enter="handleQuery"
         />
       </el-form-item>
+<!--      <el-form-item label="用户昵称" prop="nickname">-->
+<!--        <el-input-->
+<!--          v-model="queryParams.nickname"-->
+<!--          class="!w-240px"-->
+<!--          clearable-->
+<!--          placeholder="请输入用户昵称"-->
+<!--          @keyup.enter="handleQuery"-->
+<!--        />-->
+<!--      </el-form-item>-->
       <el-form-item label="手机号" prop="mobile">
         <el-input
           v-model="queryParams.mobile"
@@ -50,15 +59,15 @@
           value-format="YYYY-MM-DD HH:mm:ss"
         />
       </el-form-item>
-      <el-form-item label="用户标签" prop="tagIds">
-        <MemberTagSelect v-model="queryParams.tagIds" />
-      </el-form-item>
-      <el-form-item label="用户等级" prop="levelId">
-        <MemberLevelSelect v-model="queryParams.levelId" />
-      </el-form-item>
-      <el-form-item label="用户分组" prop="groupId">
-        <MemberGroupSelect v-model="queryParams.groupId" />
-      </el-form-item>
+<!--      <el-form-item label="用户标签" prop="tagIds">-->
+<!--        <MemberTagSelect v-model="queryParams.tagIds" />-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="用户等级" prop="levelId">-->
+<!--        <MemberLevelSelect v-model="queryParams.levelId" />-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="用户分组" prop="groupId">-->
+<!--        <MemberGroupSelect v-model="queryParams.groupId" />-->
+<!--      </el-form-item>-->
       <el-form-item>
         <el-button @click="handleQuery">
           <Icon class="mr-5px" icon="ep:search" />
@@ -68,7 +77,7 @@
           <Icon class="mr-5px" icon="ep:refresh" />
           重置
         </el-button>
-        <el-button v-hasPermi="['promotion:coupon:send']" @click="openCoupon">发送优惠券</el-button>
+<!--        <el-button v-hasPermi="['promotion:coupon:send']" @click="openCoupon">发送优惠券</el-button>-->
       </el-form-item>
     </el-form>
   </ContentWrap>
@@ -82,31 +91,32 @@
       :stripe="true"
       @selection-change="handleSelectionChange"
     >
-      <el-table-column type="selection" width="55" />
-      <el-table-column align="center" label="用户编号" prop="id" width="120px" />
-      <el-table-column align="center" label="头像" prop="avatar" width="80px">
-        <template #default="scope">
-          <img :src="scope.row.avatar" style="width: 40px" />
-        </template>
-      </el-table-column>
-      <el-table-column align="center" label="手机号" prop="mobile" width="120px" />
-      <el-table-column align="center" label="昵称" prop="nickname" width="80px" />
-      <el-table-column align="center" label="等级" prop="levelName" width="100px" />
-      <el-table-column align="center" label="分组" prop="groupName" width="100px" />
-      <el-table-column
-        :show-overflow-tooltip="false"
-        align="center"
-        label="用户标签"
-        prop="tagNames"
-      >
-        <template #default="scope">
-          <el-tag v-for="(tagName, index) in scope.row.tagNames" :key="index" class="mr-5px">
-            {{ tagName }}
-          </el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column align="center" label="积分" prop="point" width="100px" />
-      <el-table-column align="center" label="状态" prop="status" width="100px">
+      <el-table-column type="selection"/>
+      <el-table-column align="center" label="用户编号" prop="id"/>
+<!--      <el-table-column align="center" label="头像" prop="avatar" width="80px">-->
+<!--        <template #default="scope">-->
+<!--          <img :src="scope.row.avatar" style="width: 40px" />-->
+<!--        </template>-->
+<!--      </el-table-column>-->
+      <el-table-column align="center" label="用户名" prop="username"/>
+      <el-table-column align="center" label="手机号" prop="mobile"/>
+<!--      <el-table-column align="center" label="昵称" prop="nickname" width="80px" />-->
+<!--      <el-table-column align="center" label="等级" prop="levelName" width="100px" />-->
+<!--      <el-table-column align="center" label="分组" prop="groupName" width="100px" />-->
+<!--      <el-table-column-->
+<!--        :show-overflow-tooltip="false"-->
+<!--        align="center"-->
+<!--        label="用户标签"-->
+<!--        prop="tagNames"-->
+<!--      >-->
+<!--        <template #default="scope">-->
+<!--          <el-tag v-for="(tagName, index) in scope.row.tagNames" :key="index" class="mr-5px">-->
+<!--            {{ tagName }}-->
+<!--          </el-tag>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
+<!--      <el-table-column align="center" label="积分" prop="point" width="100px" />-->
+      <el-table-column align="center" label="状态" prop="status">
         <template #default="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
@@ -116,21 +126,18 @@
         align="center"
         label="登录时间"
         prop="loginDate"
-        width="180px"
       />
       <el-table-column
         :formatter="dateFormatter"
         align="center"
         label="注册时间"
         prop="createTime"
-        width="180px"
       />
       <el-table-column
         :show-overflow-tooltip="false"
         align="center"
         fixed="right"
         label="操作"
-        width="100px"
       >
         <template #default="scope">
           <div class="flex items-center justify-center">
@@ -156,24 +163,24 @@
                   >
                     编辑
                   </el-dropdown-item>
-                  <el-dropdown-item
-                    v-if="checkPermi(['member:user:update-level'])"
-                    command="handleUpdateLevel"
-                  >
-                    修改等级
-                  </el-dropdown-item>
-                  <el-dropdown-item
-                    v-if="checkPermi(['member:user:update-point'])"
-                    command="handleUpdatePoint"
-                  >
-                    修改积分
-                  </el-dropdown-item>
-                  <el-dropdown-item
-                    v-if="checkPermi(['pay:wallet:update-balance'])"
-                    command="handleUpdateBlance"
-                  >
-                    修改余额
-                  </el-dropdown-item>
+<!--                  <el-dropdown-item-->
+<!--                    v-if="checkPermi(['member:user:update-level'])"-->
+<!--                    command="handleUpdateLevel"-->
+<!--                  >-->
+<!--                    修改等级-->
+<!--                  </el-dropdown-item>-->
+<!--                  <el-dropdown-item-->
+<!--                    v-if="checkPermi(['member:user:update-point'])"-->
+<!--                    command="handleUpdatePoint"-->
+<!--                  >-->
+<!--                    修改积分-->
+<!--                  </el-dropdown-item>-->
+<!--                  <el-dropdown-item-->
+<!--                    v-if="checkPermi(['pay:wallet:update-balance'])"-->
+<!--                    command="handleUpdateBlance"-->
+<!--                  >-->
+<!--                    修改余额-->
+<!--                  </el-dropdown-item>-->
                 </el-dropdown-menu>
               </template>
             </el-dropdown>
@@ -193,11 +200,11 @@
   <!-- 表单弹窗：添加/修改 -->
   <UserForm ref="formRef" @success="getList" />
   <!-- 修改用户等级弹窗 -->
-  <UserLevelUpdateForm ref="updateLevelFormRef" @success="getList" />
+<!--  <UserLevelUpdateForm ref="updateLevelFormRef" @success="getList" />-->
   <!-- 修改用户积分弹窗 -->
-  <UserPointUpdateForm ref="updatePointFormRef" @success="getList" />
+<!--  <UserPointUpdateForm ref="updatePointFormRef" @success="getList" />-->
   <!-- 修改用户余额弹窗 -->
-  <UserBalanceUpdateForm ref="UpdateBalanceFormRef" @success="getList" />
+<!--  <UserBalanceUpdateForm ref="UpdateBalanceFormRef" @success="getList" />-->
   <!-- 发送优惠券弹窗 -->
   <CouponSendForm ref="couponSendFormRef" />
 </template>
@@ -226,6 +233,7 @@ const queryParams = reactive({
   pageNo: 1,
   pageSize: 10,
   nickname: null,
+  username: null,
   mobile: null,
   loginDate: [],
   createTime: [],
