@@ -11,31 +11,31 @@
       class="-mb-15px"
       label-width="68px"
     >
-      <el-form-item label="订单状态" prop="status">
-        <el-select v-model="queryParams.status" class="!w-280px" clearable placeholder="全部">
-          <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.TRADE_ORDER_STATUS)"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="支付方式" prop="payChannelCode">
-        <el-select
-          v-model="queryParams.payChannelCode"
-          class="!w-280px"
-          clearable
-          placeholder="全部"
-        >
-          <el-option
-            v-for="dict in getStrDictOptions(DICT_TYPE.PAY_CHANNEL_CODE)"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
-        </el-select>
-      </el-form-item>
+<!--      <el-form-item label="订单状态" prop="status">-->
+<!--        <el-select v-model="queryParams.status" class="!w-280px" clearable placeholder="全部">-->
+<!--          <el-option-->
+<!--            v-for="dict in getIntDictOptions(DICT_TYPE.TRADE_ORDER_STATUS)"-->
+<!--            :key="dict.value"-->
+<!--            :label="dict.label"-->
+<!--            :value="dict.value"-->
+<!--          />-->
+<!--        </el-select>-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="支付方式" prop="payChannelCode">-->
+<!--        <el-select-->
+<!--          v-model="queryParams.payChannelCode"-->
+<!--          class="!w-280px"-->
+<!--          clearable-->
+<!--          placeholder="全部"-->
+<!--        >-->
+<!--          <el-option-->
+<!--            v-for="dict in getStrDictOptions(DICT_TYPE.PAY_CHANNEL_CODE)"-->
+<!--            :key="dict.value"-->
+<!--            :label="dict.label"-->
+<!--            :value="dict.value"-->
+<!--          />-->
+<!--        </el-select>-->
+<!--      </el-form-item>-->
       <el-form-item label="创建时间" prop="createTime">
         <el-date-picker
           v-model="queryParams.createTime"
@@ -47,110 +47,110 @@
           value-format="YYYY-MM-DD HH:mm:ss"
         />
       </el-form-item>
-      <el-form-item label="订单来源" prop="terminal">
-        <el-select v-model="queryParams.terminal" class="!w-280px" clearable placeholder="全部">
-          <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.TERMINAL)"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="订单类型" prop="type">
-        <el-select v-model="queryParams.type" class="!w-280px" clearable placeholder="全部">
-          <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.TRADE_ORDER_TYPE)"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="配送方式" prop="deliveryType">
-        <el-select v-model="queryParams.deliveryType" class="!w-280px" clearable placeholder="全部">
-          <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.TRADE_DELIVERY_TYPE)"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item
-        v-if="queryParams.deliveryType === DeliveryTypeEnum.EXPRESS.type"
-        label="快递公司"
-        prop="logisticsId"
-      >
-        <el-select v-model="queryParams.logisticsId" class="!w-280px" clearable placeholder="全部">
-          <el-option
-            v-for="item in deliveryExpressList"
-            :key="item.id"
-            :label="item.name"
-            :value="item.id"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item
-        v-if="queryParams.deliveryType === DeliveryTypeEnum.PICK_UP.type"
-        label="自提门店"
-        prop="pickUpStoreId"
-      >
-        <el-select
-          v-model="queryParams.pickUpStoreId"
-          class="!w-280px"
-          clearable
-          multiple
-          placeholder="全部"
-        >
-          <el-option
-            v-for="item in pickUpStoreList"
-            :key="item.id"
-            :label="item.name"
-            :value="item.id"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item
-        v-if="queryParams.deliveryType === DeliveryTypeEnum.PICK_UP.type"
-        label="核销码"
-        prop="pickUpVerifyCode"
-      >
-        <el-input
-          v-model="queryParams.pickUpVerifyCode"
-          class="!w-280px"
-          clearable
-          placeholder="请输入自提核销码"
-          @keyup.enter="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="聚合搜索">
-        <el-input
-          v-show="true"
-          v-model="queryParams[queryType.queryParam]"
-          :type="queryType.queryParam === 'userId' ? 'number' : 'text'"
-          class="!w-280px"
-          clearable
-          placeholder="请输入"
-        >
-          <template #prepend>
-            <el-select
-              v-model="queryType.queryParam"
-              class="!w-110px"
-              clearable
-              placeholder="全部"
-              @change="inputChangeSelect"
-            >
-              <el-option
-                v-for="dict in dynamicSearchList"
-                :key="dict.value"
-                :label="dict.label"
-                :value="dict.value"
-              />
-            </el-select>
-          </template>
-        </el-input>
-      </el-form-item>
+<!--      <el-form-item label="订单来源" prop="terminal">-->
+<!--        <el-select v-model="queryParams.terminal" class="!w-280px" clearable placeholder="全部">-->
+<!--          <el-option-->
+<!--            v-for="dict in getIntDictOptions(DICT_TYPE.TERMINAL)"-->
+<!--            :key="dict.value"-->
+<!--            :label="dict.label"-->
+<!--            :value="dict.value"-->
+<!--          />-->
+<!--        </el-select>-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="订单类型" prop="type">-->
+<!--        <el-select v-model="queryParams.type" class="!w-280px" clearable placeholder="全部">-->
+<!--          <el-option-->
+<!--            v-for="dict in getIntDictOptions(DICT_TYPE.TRADE_ORDER_TYPE)"-->
+<!--            :key="dict.value"-->
+<!--            :label="dict.label"-->
+<!--            :value="dict.value"-->
+<!--          />-->
+<!--        </el-select>-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="配送方式" prop="deliveryType">-->
+<!--        <el-select v-model="queryParams.deliveryType" class="!w-280px" clearable placeholder="全部">-->
+<!--          <el-option-->
+<!--            v-for="dict in getIntDictOptions(DICT_TYPE.TRADE_DELIVERY_TYPE)"-->
+<!--            :key="dict.value"-->
+<!--            :label="dict.label"-->
+<!--            :value="dict.value"-->
+<!--          />-->
+<!--        </el-select>-->
+<!--      </el-form-item>-->
+<!--      <el-form-item-->
+<!--        v-if="queryParams.deliveryType === DeliveryTypeEnum.EXPRESS.type"-->
+<!--        label="快递公司"-->
+<!--        prop="logisticsId"-->
+<!--      >-->
+<!--        <el-select v-model="queryParams.logisticsId" class="!w-280px" clearable placeholder="全部">-->
+<!--          <el-option-->
+<!--            v-for="item in deliveryExpressList"-->
+<!--            :key="item.id"-->
+<!--            :label="item.name"-->
+<!--            :value="item.id"-->
+<!--          />-->
+<!--        </el-select>-->
+<!--      </el-form-item>-->
+<!--      <el-form-item-->
+<!--        v-if="queryParams.deliveryType === DeliveryTypeEnum.PICK_UP.type"-->
+<!--        label="自提门店"-->
+<!--        prop="pickUpStoreId"-->
+<!--      >-->
+<!--        <el-select-->
+<!--          v-model="queryParams.pickUpStoreId"-->
+<!--          class="!w-280px"-->
+<!--          clearable-->
+<!--          multiple-->
+<!--          placeholder="全部"-->
+<!--        >-->
+<!--          <el-option-->
+<!--            v-for="item in pickUpStoreList"-->
+<!--            :key="item.id"-->
+<!--            :label="item.name"-->
+<!--            :value="item.id"-->
+<!--          />-->
+<!--        </el-select>-->
+<!--      </el-form-item>-->
+<!--      <el-form-item-->
+<!--        v-if="queryParams.deliveryType === DeliveryTypeEnum.PICK_UP.type"-->
+<!--        label="核销码"-->
+<!--        prop="pickUpVerifyCode"-->
+<!--      >-->
+<!--        <el-input-->
+<!--          v-model="queryParams.pickUpVerifyCode"-->
+<!--          class="!w-280px"-->
+<!--          clearable-->
+<!--          placeholder="请输入自提核销码"-->
+<!--          @keyup.enter="handleQuery"-->
+<!--        />-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="聚合搜索">-->
+<!--        <el-input-->
+<!--          v-show="true"-->
+<!--          v-model="queryParams[queryType.queryParam]"-->
+<!--          :type="queryType.queryParam === 'userId' ? 'number' : 'text'"-->
+<!--          class="!w-280px"-->
+<!--          clearable-->
+<!--          placeholder="请输入"-->
+<!--        >-->
+<!--          <template #prepend>-->
+<!--            <el-select-->
+<!--              v-model="queryType.queryParam"-->
+<!--              class="!w-110px"-->
+<!--              clearable-->
+<!--              placeholder="全部"-->
+<!--              @change="inputChangeSelect"-->
+<!--            >-->
+<!--              <el-option-->
+<!--                v-for="dict in dynamicSearchList"-->
+<!--                :key="dict.value"-->
+<!--                :label="dict.label"-->
+<!--                :value="dict.value"-->
+<!--              />-->
+<!--            </el-select>-->
+<!--          </template>-->
+<!--        </el-input>-->
+<!--      </el-form-item>-->
       <el-form-item>
         <el-button @click="handleQuery">
           <Icon class="mr-5px" icon="ep:search" />
@@ -171,43 +171,52 @@
       <OrderTableColumn :list="list" :pick-up-store-list="pickUpStoreList">
         <template #default="{ row }">
           <div class="flex items-center justify-center">
+<!--            <el-button-->
+<!--              v-hasPermi="['trade:order:query']"-->
+<!--              link-->
+<!--              type="primary"-->
+<!--              @click="openDetail(row.id)"-->
+<!--            >-->
+<!--              <Icon icon="ep:notification" />-->
+<!--              详情-->
+<!--            </el-button>-->
             <el-button
               v-hasPermi="['trade:order:query']"
               link
               type="primary"
-              @click="openDetail(row.id)"
+              @click="remark(row)"
             >
-              <Icon icon="ep:notification" />
-              详情
+              <Icon icon="ep:chat-line-square" />
+              备注
             </el-button>
-            <el-dropdown
-              v-hasPermi="['trade:order:update']"
-              @command="(command) => handleCommand(command, row)"
-            >
-              <el-button link type="primary">
-                <Icon icon="ep:d-arrow-right" />
-                更多
-              </el-button>
-              <template #dropdown>
-                <el-dropdown-menu>
-                  <!-- 如果是【快递】，并且【未发货】，则展示【发货】按钮 -->
-                  <el-dropdown-item
-                    v-if="
-                      row.deliveryType === DeliveryTypeEnum.EXPRESS.type &&
-                      row.status === TradeOrderStatusEnum.UNDELIVERED.status
-                    "
-                    command="delivery"
-                  >
-                    <Icon icon="ep:takeaway-box" />
-                    发货
-                  </el-dropdown-item>
-                  <el-dropdown-item command="remark">
-                    <Icon icon="ep:chat-line-square" />
-                    备注
-                  </el-dropdown-item>
-                </el-dropdown-menu>
-              </template>
-            </el-dropdown>
+<!--            <el-dropdown-->
+<!--              v-hasPermi="['trade:order:update']"-->
+<!--              @command="(command) => handleCommand(command, row)"-->
+<!--            >-->
+<!--              <el-button link type="primary">-->
+<!--                <Icon icon="ep:d-arrow-right" />-->
+<!--                更多-->
+<!--              </el-button>-->
+<!--              <template #dropdown>-->
+<!--                <el-dropdown-menu>-->
+<!--                  &lt;!&ndash; 如果是【快递】，并且【未发货】，则展示【发货】按钮 &ndash;&gt;-->
+<!--                  <el-dropdown-item-->
+<!--                    v-if="-->
+<!--                      row.deliveryType === DeliveryTypeEnum.EXPRESS.type &&-->
+<!--                      row.status === TradeOrderStatusEnum.UNDELIVERED.status-->
+<!--                    "-->
+<!--                    command="delivery"-->
+<!--                  >-->
+<!--                    <Icon icon="ep:takeaway-box" />-->
+<!--                    发货-->
+<!--                  </el-dropdown-item>-->
+<!--                  <el-dropdown-item command="remark">-->
+<!--                    <Icon icon="ep:chat-line-square" />-->
+<!--                    备注-->
+<!--                  </el-dropdown-item>-->
+<!--                </el-dropdown-menu>-->
+<!--              </template>-->
+<!--            </el-dropdown>-->
           </div>
         </template>
       </OrderTableColumn>
@@ -322,6 +331,9 @@ const resetQuery = () => {
 /** 查看订单详情 */
 const openDetail = (id: number) => {
   push({ name: 'TradeOrderDetail', params: { id } })
+}
+const remark = (row: TradeOrderApi.OrderVO) => {
+  updateRemarkForm.value?.open(row)
 }
 
 /** 操作分发 */

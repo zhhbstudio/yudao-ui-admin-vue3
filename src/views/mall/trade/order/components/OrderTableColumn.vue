@@ -8,18 +8,18 @@
         <div :style="{ width: orderTableHeadWidthList[1] + 'px' }" class="flex justify-center">
           单价(元)/数量
         </div>
-        <div :style="{ width: orderTableHeadWidthList[2] + 'px' }" class="flex justify-center">
-          售后状态
-        </div>
+<!--        <div :style="{ width: orderTableHeadWidthList[2] + 'px' }" class="flex justify-center">-->
+<!--          售后状态-->
+<!--        </div>-->
         <div :style="{ width: orderTableHeadWidthList[3] + 'px' }" class="flex justify-center">
           实付金额(元)
         </div>
-        <div :style="{ width: orderTableHeadWidthList[4] + 'px' }" class="flex justify-center">
-          买家/收货人
-        </div>
-        <div :style="{ width: orderTableHeadWidthList[5] + 'px' }" class="flex justify-center">
-          配送方式
-        </div>
+<!--        <div :style="{ width: orderTableHeadWidthList[4] + 'px' }" class="flex justify-center">-->
+<!--          买家/收货人-->
+<!--        </div>-->
+<!--        <div :style="{ width: orderTableHeadWidthList[5] + 'px' }" class="flex justify-center">-->
+<!--          配送方式-->
+<!--        </div>-->
         <div :style="{ width: orderTableHeadWidthList[6] + 'px' }" class="flex justify-center">
           订单状态
         </div>
@@ -45,39 +45,39 @@
             >
               <span class="mr-20px">订单号：{{ scope.row.no }} </span>
               <span class="mr-20px">下单时间：{{ formatDate(scope.row.createTime) }}</span>
-              <span>订单来源：</span>
-              <dict-tag :type="DICT_TYPE.TERMINAL" :value="scope.row.terminal" class="mr-20px" />
-              <span>支付方式：</span>
-              <dict-tag
-                v-if="scope.row.payChannelCode"
-                :type="DICT_TYPE.PAY_CHANNEL_CODE"
-                :value="scope.row.payChannelCode"
-                class="mr-20px"
-              />
-              <span v-else class="mr-20px">未支付</span>
+<!--              <span>订单来源：</span>-->
+<!--              <dict-tag :type="DICT_TYPE.TERMINAL" :value="scope.row.terminal" class="mr-20px" />-->
+<!--              <span>支付方式：</span>-->
+<!--              <dict-tag-->
+<!--                v-if="scope.row.payChannelCode"-->
+<!--                :type="DICT_TYPE.PAY_CHANNEL_CODE"-->
+<!--                :value="scope.row.payChannelCode"-->
+<!--                class="mr-20px"-->
+<!--              />-->
+<!--              <span v-else class="mr-20px">未支付</span>-->
               <span v-if="scope.row.payTime" class="mr-20px">
                 支付时间：{{ formatDate(scope.row.payTime) }}
               </span>
-              <span>订单类型：</span>
-              <dict-tag :type="DICT_TYPE.TRADE_ORDER_TYPE" :value="scope.row.type" />
+<!--              <span>订单类型：</span>-->
+<!--              <dict-tag :type="DICT_TYPE.TRADE_ORDER_TYPE" :value="scope.row.type" />-->
             </div>
           </template>
           <template #default="{ row }">
             <div class="flex flex-wrap">
               <div class="mb-[10px] mr-[10px] flex items-start">
                 <div class="mr-[10px]">
-                  <el-image
-                    :src="row.picUrl"
-                    class="!h-[45px] !w-[45px]"
-                    fit="contain"
-                    @click="imagePreview(row.picUrl)"
-                  >
-                    <template #error>
-                      <div class="image-slot">
-                        <icon icon="ep:picture" />
-                      </div>
-                    </template>
-                  </el-image>
+<!--                  <el-image-->
+<!--                    :src="row.picUrl"-->
+<!--                    class="!h-[45px] !w-[45px]"-->
+<!--                    fit="contain"-->
+<!--                    @click="imagePreview(row.picUrl)"-->
+<!--                  >-->
+<!--                    <template #error>-->
+<!--                      <div class="image-slot">-->
+<!--                        <icon icon="ep:picture" />-->
+<!--                      </div>-->
+<!--                    </template>-->
+<!--                  </el-image>-->
                 </div>
                 <ElTooltip :content="row.spuName" placement="top">
                   <span class="overflow-ellipsis max-h-[45px] overflow-hidden">
@@ -85,13 +85,14 @@
                   </span>
                 </ElTooltip>
               </div>
-              <el-tag
-                v-for="property in row.properties"
-                :key="property.propertyId"
-                class="mb-[10px] mr-[10px]"
-              >
-                {{ property.propertyName }}: {{ property.valueName }}
-              </el-tag>
+              <div v-for="property in row.properties" :key="property.propertyId">
+                <el-tag
+                  class="mb-[10px] mr-[10px]"
+                >
+                  {{ property.propertyName }}: {{ property.valueName }}
+                </el-tag>
+              </div>
+
             </div>
           </template>
         </el-table-column>
@@ -100,57 +101,57 @@
             {{ floatToFixed2(row.price) }} 元 / {{ row.count }}
           </template>
         </el-table-column>
-        <el-table-column label="售后状态" prop="afterSaleStatus" width="120">
-          <template #default="{ row }">
-            <dict-tag
-              :type="DICT_TYPE.TRADE_ORDER_ITEM_AFTER_SALE_STATUS"
-              :value="row.afterSaleStatus"
-            />
-          </template>
-        </el-table-column>
+<!--        <el-table-column label="售后状态" prop="afterSaleStatus" width="120">-->
+<!--          <template #default="{ row }">-->
+<!--            <dict-tag-->
+<!--              :type="DICT_TYPE.TRADE_ORDER_ITEM_AFTER_SALE_STATUS"-->
+<!--              :value="row.afterSaleStatus"-->
+<!--            />-->
+<!--          </template>-->
+<!--        </el-table-column>-->
         <el-table-column align="center" label="实际支付" min-width="120" prop="payPrice">
           <template #default>
             {{ floatToFixed2(scope.row.payPrice) + '元' }}
           </template>
         </el-table-column>
-        <el-table-column label="买家/收货人" min-width="160">
-          <template #default>
-            <!-- 快递发货  -->
-            <div
-              v-if="scope.row.deliveryType === DeliveryTypeEnum.EXPRESS.type"
-              class="flex flex-col"
-            >
-              <span>买家：{{ scope.row.user.nickname }}</span>
-              <span>
-                收货人：{{ scope.row.receiverName }} {{ scope.row.receiverMobile }}
-                {{ scope.row.receiverAreaName }} {{ scope.row.receiverDetailAddress }}
-              </span>
-            </div>
-            <!-- 自提  -->
-            <div
-              v-if="scope.row.deliveryType === DeliveryTypeEnum.PICK_UP.type"
-              class="flex flex-col"
-            >
-              <span>
-                门店名称：
-                {{ pickUpStoreList.find((p) => p.id === scope.row.pickUpStoreId)?.name }}
-              </span>
-              <span>
-                门店手机：
-                {{ pickUpStoreList.find((p) => p.id === scope.row.pickUpStoreId)?.phone }}
-              </span>
-              <span>
-                自提门店:
-                {{ pickUpStoreList.find((p) => p.id === scope.row.pickUpStoreId)?.detailAddress }}
-              </span>
-            </div>
-          </template>
-        </el-table-column>
-        <el-table-column align="center" label="配送方式" width="120">
-          <template #default>
-            <dict-tag :type="DICT_TYPE.TRADE_DELIVERY_TYPE" :value="scope.row.deliveryType" />
-          </template>
-        </el-table-column>
+<!--        <el-table-column label="买家/收货人" min-width="160">-->
+<!--          <template #default>-->
+<!--            &lt;!&ndash; 快递发货  &ndash;&gt;-->
+<!--            <div-->
+<!--              v-if="scope.row.deliveryType === DeliveryTypeEnum.EXPRESS.type"-->
+<!--              class="flex flex-col"-->
+<!--            >-->
+<!--              <span>买家：{{ scope.row.user.nickname }}</span>-->
+<!--              <span>-->
+<!--                收货人：{{ scope.row.receiverName }} {{ scope.row.receiverMobile }}-->
+<!--                {{ scope.row.receiverAreaName }} {{ scope.row.receiverDetailAddress }}-->
+<!--              </span>-->
+<!--            </div>-->
+<!--            &lt;!&ndash; 自提  &ndash;&gt;-->
+<!--            <div-->
+<!--              v-if="scope.row.deliveryType === DeliveryTypeEnum.PICK_UP.type"-->
+<!--              class="flex flex-col"-->
+<!--            >-->
+<!--              <span>-->
+<!--                门店名称：-->
+<!--                {{ pickUpStoreList.find((p) => p.id === scope.row.pickUpStoreId)?.name }}-->
+<!--              </span>-->
+<!--              <span>-->
+<!--                门店手机：-->
+<!--                {{ pickUpStoreList.find((p) => p.id === scope.row.pickUpStoreId)?.phone }}-->
+<!--              </span>-->
+<!--              <span>-->
+<!--                自提门店:-->
+<!--                {{ pickUpStoreList.find((p) => p.id === scope.row.pickUpStoreId)?.detailAddress }}-->
+<!--              </span>-->
+<!--            </div>-->
+<!--          </template>-->
+<!--        </el-table-column>-->
+<!--        <el-table-column align="center" label="配送方式" width="120">-->
+<!--          <template #default>-->
+<!--            <dict-tag :type="DICT_TYPE.TRADE_DELIVERY_TYPE" :value="scope.row.deliveryType" />-->
+<!--          </template>-->
+<!--        </el-table-column>-->
         <el-table-column align="center" label="订单状态" width="120">
           <template #default>
             <dict-tag :type="DICT_TYPE.TRADE_ORDER_STATUS" :value="scope.row.status" />
@@ -236,7 +237,7 @@ const setOrderTableRef = (el: TableInstance) => {
   tableHeadWidthAuto(el)
 }
 // 头部 col 宽度初始化
-const orderTableHeadWidthList = ref([300, 150, 120, 120, 160, 120, 120, 160])
+const orderTableHeadWidthList = ref([600, 150, 120, 120, 160, 120, 120, 160])
 // 头部宽度自适应
 const tableHeadWidthAuto = (el: TableInstance) => {
   const columns = el.store.states.columns.value
